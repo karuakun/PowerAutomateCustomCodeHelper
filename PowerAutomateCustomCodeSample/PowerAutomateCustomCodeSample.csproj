@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PowerAutomateCustomCodeHelper\PowerAutomateCustomCodeHelper.csproj" />
+    <PackageReference Include="PowerAutomateCustomCodeHelper" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
