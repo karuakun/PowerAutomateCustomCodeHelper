@@ -1,10 +1,8 @@
 ﻿using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Security.Cryptography;
 using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
 using System.Web;
 using Newtonsoft.Json.Linq;
@@ -20,7 +18,6 @@ namespace PowerAutomateCustomCodeSample
             return Context.OperationId switch
             {
                 "ComputeMD5" => GetComputeMd5(),
-                //"SendData" => await PostSendDataAsync(),
                 _ => new HttpResponseMessage(HttpStatusCode.BadRequest)
             };
         }
@@ -48,36 +45,5 @@ namespace PowerAutomateCustomCodeSample
             }).ToString());
             return response;
         }
-
-        private readonly JsonSerializerOptions _jsonSerializerOptions = new()
-        {
-            PropertyNameCaseInsensitive = true
-        };
-
-        //private async Task<HttpResponseMessage> PostSendDataAsync()
-        //{
-        //    // Postされたフォームデータから search を参照する
-        //    if (Context.Request.Content == null)
-        //    {
-        //        return new HttpResponseMessage(HttpStatusCode.BadRequest);
-        //    }
-        //    var postData = await Context.Request.Content.ReadFromJsonAsync<IPostSendDataAsyncRequest>(_jsonSerializerOptions);
-        //    if (string.IsNullOrEmpty(postData?.Search))
-        //    {
-        //        return new HttpResponseMessage(HttpStatusCode.BadRequest);
-        //    }
-
-        //    // 外部に通信してデータを取得してレスンポスに格納する
-        //    var response = await Context.SendAsync(new HttpRequestMessage
-        //    {
-
-        //    }, CancellationToken).ConfigureAwait(false);
-
-        //}
-
-        //public interface IPostSendDataAsyncRequest
-        //{
-        //    string Search { get; set; }
-        //}
     }
 }
